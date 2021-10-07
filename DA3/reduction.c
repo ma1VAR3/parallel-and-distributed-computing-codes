@@ -14,7 +14,6 @@ int main()
     sum = 0;
     double start;
     start = omp_get_wtime();
-    printf("19BCI0171 Prajjwal Gupta");
     printf("\nReduction using %d threads", NUM_THREADS);
     #pragma omp parallel
     {
