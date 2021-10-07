@@ -1,6 +1,17 @@
 <h1>Parallel and Distributed Computing Codes</h1>
 
-<p>This repository contains the codes for the assignment given by my professor for the course parallel and distributed computing. OpenMP and MPI have been utilized in order to obatain parallelisms.</p>
-<p>Raise an issue if code for any question not included in this repository is required</P>
+<p>This repository contains the codes for parallel and distributed computing problems. OpenMP and MPI have been utilized in order to obatain parallelism.</p>
+
+> ⚠️**Raise an issue if code for any problem not included in this repository is required**
 
 <h3>Guide</h3>
+
+For linux systems:
+
+```bash
+
+gcc -o [output file name.out] -fopenmp [filename.c]
+
+```
+
+<h4>Problems included</h4>
