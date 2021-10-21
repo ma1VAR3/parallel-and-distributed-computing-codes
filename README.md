@@ -26,7 +26,7 @@ gcc -o [output file name.out] -fopenmp [filename.c]
 
 <h4>DA2</h4>
 
-1.  This example attempts to show use of the parallel for construct. However it will generate errors at compile time. Try to determine what is causing the error. <br>[corrected code](./DA2/correction1.c) [corrections](./DA2/corrections1.txt)
+1.  This example attempts to show use of the parallel for construct. However it will generate errors at compile time. Try to determine what is causing the error. <br>[corrected code](./DA2/correction1.c) <br> [corrections](./DA2/corrections1.txt)
 
 ```c
 #include<stdio.h>
