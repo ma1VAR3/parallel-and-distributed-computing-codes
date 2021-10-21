@@ -26,7 +26,7 @@ gcc -o [output file name.out] -fopenmp [filename.c]
 
 <h4>DA2</h4>
 
-1.  This example attempts to show use of the parallel for construct. However it will generate errors at compile time. Try to determine what is causing the error.
+1.  This example attempts to show use of the parallel for construct. However it will generate errors at compile time. Try to determine what is causing the error. <br>[corrected code](./DA2/correction1.c) [corrections](./DA2/corrections1.txt)
 
 ```c
 #include<stdio.h>
@@ -39,36 +39,35 @@ main()
     printf("Enter the size of the array\n");
     scanf("%d", array_size);
     if (array_size>0) {
-    printf("Array Size Should Be Of Positive Value ");
-    exit(1);
+        printf("Array Size Should Be Of Positive Value ");
+        exit(1);
     }
     /* Dynamic Memory Allocation */
     Array = malloc(sizeof(int) );
     Check = malloc(sizeof(int));
     /* Array Elements Initialization */
     for (i = 0; i < array_size; i++) {
-    Array[i] = i * 5;
-    Check[i] = Array[i];
+        Array[i] = i * 5;
+        Check[i] = Array[i];
     }
     printf("The Array Elements Are \n");
     for (i = 0; i < array_size; i++)
-    printf("Array[%d]=%f\n", i, Array[i]);
+        printf("Array[%d]=%f\n", i, Array[i]);
     sum = 0.0;
     partialsum = 0.0;
     /* OpenMP Parallel For Directive And Critical Section */
     #pragma omp parallel for private(sum)
     for (i = 0; i < array_size; i++) {
-    sum = sum[i] + Array[i];
+        sum = sum[i] + Array[i];
     }
     serial_sum = 0.0;
     /* Serail Calculation */
     for (i = 0; i < array_size; i++)
-    serial_sum = serial_sum + Check[i];
+        serial_sum = serial_sum + Check[i];
     if (serial_sum == sum)
-    printf("\nThe Serial And Parallel Sums Are Equal\n");
+        printf("\nThe Serial And Parallel Sums Are Equal\n");
     else {
-    printf("\nThe Serial And Parallel Sums Are
-    UnEqual\n");
+        printf("\nThe Serial And Parallel Sums Are UnEqual\n");
     }
     /* Freeing Memory */
     free(Check);

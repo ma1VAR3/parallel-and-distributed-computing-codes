@@ -1,0 +1,18 @@
+The following errors were giving compile time error:
+
+1) In line 32: sum = sum[i] + Array[i];
+Here sum is an integer but it is being called as an array. The correct code would be: sum = sum + Array[i];
+
+
+The following code were giving logical errors:
+
+1) Incorrect: scanf("%d", array_size);
+Correct: scanf("%d", &array_size);
+
+2) Incorrect: if (array_size>0)
+Correct: if (array_size<0)
+
+3) Incorrect: Correct: Array = malloc(sizeof(int) );
+ Check = malloc(sizeof(int)); 
+Correct: Array = malloc(sizeof(int) * array_size);
+ Check = malloc(sizeof(int) * array_size);
