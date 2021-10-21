@@ -81,6 +81,32 @@ main()
 
 2.  This example attempts to show use of the parallel for construct. However it will generate errors at compile time. Try to determine what is causing the error. <br>[corrected code](./DA2/correction2.c) <br> [corrections](./DA2/corrections2.txt)
 
+```c
+#include <omp.h>
+#include <stdio.h>
+#include <stdlib.h>
+#define N 10
+#define CHUNKSIZE 2
+int main (int argc, char *argv[])
+{
+    int i, chunk, tid;
+    float a[N], b[N], c[N];
+    /* Some initializations */
+    for (i=0; i < N; i++)
+    a[i] = b[i] = i * 1.0;
+    chunk = CHUNKSIZE;
+    #pragma omp parallel for shared(a,b,c,chunk) private(i) schedule(static,chunk)
+    {
+        tid = omp_get_threads_num();
+        for (i=0; i < N; i++)
+        {
+            c[i] = a[i] + b[i];
+            printf("tid= %d i= %d c[i]= %f\n", tid, i, c[i]);
+        }
+    } /* end of parallel for construct */
+}
+```
+
 <h4>DA3</h4>
 
 1. Write an OpenMP program to find and sum the Fibonacci series. Use one thread to generate the numbers up to the specified limit N=40 and other threads has to sum and print them. Use omp critical and reduction to protect the code region that might be updated by multiple threads concurrently. Measure the execution time for both versions (omp critical amd reduction) varying the number of threads: 4 and 8. <br>[using critical code](./DA3/critical.c) <br>[using reduction code](./DA1/reduction.c)
