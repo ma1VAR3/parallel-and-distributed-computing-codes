@@ -79,7 +79,7 @@ main()
 }
 ```
 
-2.  This example attempts to show use of the parallel for construct. However it will generate errors at compile time. Try to determine what is causing the error. <br>[corrected code](./DA2/correction1.c) <br> [corrections](./DA2/corrections1.txt)
+2.  This example attempts to show use of the parallel for construct. However it will generate errors at compile time. Try to determine what is causing the error. <br>[corrected code](./DA2/correction2.c) <br> [corrections](./DA2/corrections2.txt)
 
 <h4>DA3</h4>
 

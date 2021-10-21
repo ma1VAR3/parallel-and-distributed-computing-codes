@@ -1,0 +1,31 @@
+1. The parallel contructs for defining parallel region and loop work sharing have to be separated.
+
+2. Incorrect: tid = omp_get_threads_num(); 
+Correct tid = omp_get_thread_num();
+ 
+3. tid has to be a private variable
+Incorrect: private(i)
+Correct: private(i, tid)
+
+Combining the points above:
+Incorrect: 
+#pragma omp parallel for shared(a,b,c,chunk) private(i) schedule(static,chunk) 
+{ 
+    tid = omp_get_threads_num(); 
+    for (i=0; i < N; i++) 
+    { 
+        c[i] = a[i] + b[i]; 
+        printf("tid= %d i= %d c[i]= %f\n", tid, i, c[i]); 
+    } 
+}
+Correct: 
+#pragma omp parallel shared(a, b, c, chunk) private(i, tid) 
+{ 
+    tid = omp_get_thread_num(); 
+    #pragma omp for schedule(static, chunk)
+    for (i=0; i < N; i++) 
+    { 
+        c[i] = a[i] + b[i]; 
+        printf("tid= %d i= %d c[i]= %f\n", tid, i, c[i]); 
+    } 
+}
